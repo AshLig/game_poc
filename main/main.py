@@ -1,5 +1,6 @@
 import pygame, sys 
 from settings import *
+from level import Level
 
 
 class Game:
@@ -9,6 +10,8 @@ class Game:
         pygame.display.set_caption('game_poc') #names the window of your game, takes a string parameter
         self.clock = pygame.time.Clock() #controlling the FPS rate
 
+        self.level = Level() #created instance of class level 
+
     def run_game(self):
         while True: #infinite loop
             for event in pygame.event.get(): #loops through events     ///   gets all the possible player input events
@@ -17,6 +20,7 @@ class Game:
                     sys.exit() #gets rid of while loop
             
             pygame.display.update() #updates the display window
+            self.level.run() 
             self.clock.tick(FPS)
 
 
