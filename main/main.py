@@ -19,8 +19,9 @@ class Game:
                     pygame.quit()
                     sys.exit() #gets rid of while loop
             
-            pygame.display.update() #updates the display window
-            self.level.run() 
+            self.screen.fill('black') 
+            self.level.run()
+            pygame.display.update() #updates the display window 
             self.clock.tick(FPS)
 
 
