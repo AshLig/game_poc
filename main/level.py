@@ -24,7 +24,7 @@ class Level:
                 if col == 'x':
                     TestRock((x,y), [self.visible_sprites, self.obstacle_sprites])
                 if col == 'p':
-                    self.player = TestPlayer((x,y), [self.visible_sprites])
+                    self.player = TestPlayer((x,y), [self.visible_sprites], self.obstacle_sprites)
     
     def run(self):
         #update and draw game
@@ -47,6 +47,6 @@ class YSortCameraGroup(pygame.sprite.Group): #class - camera being sorted by the
         self.offset.y = player.rect.centery - self.half_height
 
 
-        for sprite in self.sprites():
+        for sprite in sorted(self.sprites(), key = lambda sprite: sprite.rect.centery): ####https://realpython.com/python-lambda/####
             offset_pos = sprite.rect.topleft - self.offset
             self.display_surface.blit(sprite.image, offset_pos)
